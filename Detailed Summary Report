@@ -1,0 +1,167 @@
+Power BI Dashboard Analysis Report
+
+Project Name: Online Sales Analysis
+Tools Used: Power BI, Excel, DAX, Power Query
+Data Focus: Customers, Sales, Shipping Costs, Discounts, Categories, Shipment & Payment Channels
+
+Online Sales Analysis Dashboard
+Overview - 
+This interactive Power BI dashboard provides a comprehensive analysis of online sales performance across multiple dimensions including customer segmentation, product categories, pricing, discounting, and shipment logistics. Built to support strategic decision-making, the dashboard showcases key performance indicators, visual trends, and actionable insights.
+
+KPI -
+| Metric                               | Value    | Insight                                                             |
+| ------------------------------------ | -------- | ------------------------------------------------------------------- |
+| Total Shipping Cost                  | ₹783.36K | Indicates significant logistics cost — impacts profit margins.      |
+| Total Customers                      | 35K      | Healthy customer base for online operations.                        |
+| Total Profit                         | ₹55.34M  | Reflects strong profitability despite discounting & shipping costs. |
+| Max Discount                         | 0.50     | Up to 50% discounts applied; high in some product lines.            |
+| Max Unit Price                       | ₹100     | Highest product value — possibly premium segment.                   |
+| Avg Unit Price                       | ₹50.62   | Indicates majority of products are mid-range priced.                |
+| Avg Shipping Cost                    | ₹17.48   | Reasonable average shipping cost per item.                          |
+| Total Shipping Cost per Customer     | ₹22.14   | Valuable for customer lifetime value calculations.                  |
+| Avg Discount                         | 0.25     | Average of 25% discount — moderate promotional strategy.            |
+
+Key Insights -
+Profitability : Total profit across all products reached ₹55.34M, with average unit pricing at ₹50.62.
+Customer Reach : Engaged 35,000 unique customers through online channels.
+Logistics Optimization : Average shipping cost per customer was ₹22.14 furniture category incurred highest logistics costs.
+Product Highlights : High-performing items include backpacks, desk lamps, and pens—key contributors to sales volume and profit.
+Payment Preference : Customers slightly favor bank transfers over credit cards and PayPal.
+
+Dashboard Features -
+- Dynamic filters for Sales Channel, Order Priority and Payment Method.
+- KPI cards summarizing profits, customer count, shipping costs, and pricing trends
+- Bar charts for category-wise customer distribution and shipping expenses
+- Pie chart comparing distribution across FedEx, DHL, UPS, and Royal Mail
+- Data table summarizing product-level performance metrics.
+
+
+Actionable Recommendations - 
+- Reassess shipping vendors or packaging for bulky items like furniture to reduce in delivery costs
+- Bundle top-selling accessories like (e.g., pens, backpacks) for increased in cart value
+- Maintain balanced discounting strategy to preserve profit margins
+- Monitor shipment provider performance across regions for cost-efficiency.
+
+Combined Shipping & Discount KPI - 
+- Total Combined Value: ₹783.36K
+- Target Goal: ₹11.22K
+- Variance: +6880.46%
+- This massive overachievement suggests either a misaligned target baseline a surge in shipping and discount activity due to seasonal demand or bulk orders.
+
+
+Summary of Business Insights -
+- Area	Insights - 
+- Sales Performance	Consistent profitability across categories with strong sales of utility items.
+- Logistics	Furniture incurs the highest shipping and discounts. Overall shipping cost is high which is (₹783K) compared to a target of ₹11K which got (overshot by 6880%).
+- Geography	France and Germany lead customer base. Country-wise distribution is even.
+- Payments	Bank Transfers are the most used, PayPal slightly behind.
+- Product Strategy - All product categories maintain even customer engagement.
+- Discount Strategy	Discount values are standardized across all categories — potentially automated campaigns.
+- Recommendation	- Need to Revisit shipping contracts and logistics strategy.
+
+
+
+
+
+Data Manipulation/Cleaning
+Tools used - Python
+Library - Pandas
+Software - JupyterLab
+Procedure - 
+Library Imports & Setup:
+-By importing key data analysis libraries—pandas and numpy for data manipulation, matplotlib and seaborn for visualization, and suppressed warnings to maintain a clean output environment.
+
+Loading the Dataset - 
+- The raw sales data (New_online_sales.csv) was loaded into a pandas DataFrame, setting the foundation for subsequent data wrangling, exploration, and cleaning.
+
+Data Exploration - 
+- Inspected the dataset's structure with .info() to understand its columns, data types, and non-null counts.
+-Following that used .isnull().sum() to tally missing values in each column and reviewed sample records with .tail().
+
+Data Cleaning:
+- Addressed data quality by:
+- Dropped rows with missing (null) values using .dropna(inplace=True).
+- Double-checked for remaining nulls to verify that the dataset was fully cleaned.
+- Explicitly checked for missing CustomerID values, ensuring data integrity.
+
+ Data Type & Date Conversion:
+- Observed column data types with .dtypes, and performed robust date handling by:
+- Converted the InvoiceDate column from string to datetime format (with day-first interpretation), handling parsing errors via coercion.
+- Extracted just the date portion for simplified analysis.
+
+ Dropping Unneeded Columns:
+- The column DateTime was removed as it was redundant, streamlining the dataset for analysis.
+
+ Saving Cleaned Data:
+- Exported the cleaned DataFrame to new CSV files at specified locations—once locally (New_online_sales) and once to a user directory for seamless integration into further tools or databases.
+
+ Save Verification:
+ A check confirmed that the cleaned file was successfully saved in the designated directory, completing the data preparation for Mysql workbench.
+
+
+
+
+
+
+Analysis on MySQL - 
+Overview - 
+I have developed a comprehensive set of 30 SQL queries designed to analyze a sales dataset imported into a MySQL database named Sales.
+The table new_sales_data serves as the central fact table, containing rich transactional and item-level details for each order,
+including product data, sales channels, pricing, discounts, shipping information, customer identifiers, and more.
+
+1. Data Exploration & Cleansing -
+Created a new Database, imported the cleaned file in workbench and Queried all records for an initial overview of the dataset (select * from new_sales_data).
+Identified all distinct countries served, laying the groundwork for segmentation analysis.
+
+2. Sales and Revenue Analysis -
+Calculated total shipping sales and overall revenue metrics.
+Determined total quantity sold, revenue per product, and sales by payment method, shipment provider, and sales channel (online vs in-store).
+Compared performance of order priorities and visualized monthly sales trends to spot seasonality.
+
+3. Product & Category Insights -
+Identified top 10 products by unit price and most sold products by country.
+Ranked products within countries by quantity sold.
+Aggregated quantity and revenue at the product and category levels, finding top performers and revenue generators
+Isolated top revenue-generating categories and compared their shipping costs.
+
+4. Customer and Behavioral Analytics -
+Segmented customers with multiple purchases, enabling loyalty analysis.
+Counted customers per payment method and shipment provider, providing insights into customer preferences.
+Explored returns by product, category, and country, including top 5 most returned products—crucial for quality and satisfaction metrics.
+
+5. Operational and Supply Chain Insights -
+Compared sales and shipping performance per warehouse location.
+Analyzed total orders and shipping costs by warehouse, highlighting logistical efficiency.
+Analyzed orders by sales channel and shipment provider, supporting channel strategy and operational improvements.
+
+6. Time-Based and Advanced Analytics -
+Explored sales by day of the week to uncover patterns in transaction volumes and revenues.
+Produced monthly sales volume trends for time-series analysis.
+Calculated cumulative and average discounts at product and order levels for pricing optimization.
+
+7. Data Preparation for Business Intelligence -
+Prepared detailed, intermediate datasets and metrics for visualization or reporting such as sales volume by region, profit before/after discounts,
+detailed transaction logs from specific countries (like Australia), and more.
+
+
+Insights - 
+Country and Channel-wise Revenue Leaders:  Identified top revenue-generating countries and sales channels, allowing targeted market and channel investments.
+
+Top & Low Performers:                      Highlighted best-selling products and categories, as well as those with the highest returns, enabling inventory and product quality strategies.
+
+Return Trends:                             Quantified and ranked product returns by item and category, allowing focused improvements on problematic products.
+ 
+Shipping and Logistics:                    Revealed average and total shipping costs by provider, warehouse, and category, uncovering potential areas for cost optimization.
+
+Customer Preferences:                      Profiled customer payment and shipping preferences for enhanced service and marketing.
+
+Revenue Impact of Discounts:               Calculated total and average discounts' effect on overall revenue, supporting pricing and promotional planning.
+
+Sales Timing Patterns:                     Uncovered monthly and weekly sales trends, providing seasonal demand insights for supply chain alignment and marketing campaigns.
+
+Repeat Business Analysis:                  Identified repeat customers for loyalty and retention program opportunities.
+
+Cross-Tab Analysis:                        Enabled nuanced queries such as sales by product per country, sales by channel per country, and per warehouse, supporting granular business optimization.
+
+
+This SQL project is an excellent demonstration of your capacity to turn complex, raw sales datasets into valuable business insights using advanced SQL techniques
