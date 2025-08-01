@@ -105,7 +105,7 @@ Data Cleaning:
 
 Analysis on MySQL - 
 Overview - 
-I have developed a comprehensive set of 30 SQL queries designed to analyze a sales dataset imported into a MySQL database named Sales.
+Developed a comprehensive set of 30 SQL queries designed to analyze a sales dataset imported into a MySQL database named Sales.
 The table new_sales_data serves as the central fact table, containing rich transactional and item-level details for each order,
 including product data, sales channels, pricing, discounts, shipping information, customer identifiers, and more.
 
