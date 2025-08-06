@@ -1,4 +1,4 @@
-# Online-Sales-Analysis
+# Online-Sales-Analysis  Data Analysis
 Introduction-
 This project presents an end-to-end analysis of online sales data, transforming raw datasets into actionable business insights through a comprehensive workflow that integrates Power BI visualizations, Python-based data cleaning, and advanced SQL analytics. It showcases a complete data pipeline—from initial exploration to structured querying—demonstrating proficiency in identifying trends, optimizing strategies, and enabling data-driven decision-making in the e-commerce domain.
 
